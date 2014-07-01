@@ -93,7 +93,12 @@ Disqus.prototype = {
         if (method === 'get') {
             url = this.getRequestUrl(resource, params);
 
-            request.get(url, function() {
+            var params = {
+                url: url,
+                timeout: 5000 
+            };
+
+            request.get(params, function() {
                 callback( this._handleResponse.apply(this, arguments) );
             }.bind(this));
         }
